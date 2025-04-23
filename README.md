@@ -1,5 +1,4 @@
-# DSE4101 Individual Project: Bitcoin Volatility Forecasting
-
+# DSE4101: A Regime-Switching Approach to Bitcoin Volatility Forecasting
 ## Overview
 
 This project investigates the application of Markov Regime-Switching (MRS) models combined with Heterogeneous AutoRegressive (HAR) and Random Forest (RF) approaches to forecast Bitcoin volatility. The research aims to compare single-regime and two-regime models to determine which provides superior predictive accuracy and practical value in risk management and trading strategies.
