@@ -1,0 +1,7 @@
+Model 1,Model 2,DM Statistic,P-Value,Conclusion
+OneRegHAR,OneRegRF,-1.1797836533004622,0.23881664306127343,No significant difference; similar predictive accuracy.
+OneRegHAR,TwoRegHAR,0.3104321977371524,0.7564007322437775,No significant difference; similar predictive accuracy.
+OneRegHAR,TwoRegRF,-0.33664240853589766,0.7365703808624403,No significant difference; similar predictive accuracy.
+OneRegRF,TwoRegHAR,1.1160547822148836,0.26509657849090823,No significant difference; similar predictive accuracy.
+OneRegRF,TwoRegRF,0.8352148540245935,0.40411608944785427,No significant difference; similar predictive accuracy.
+TwoRegHAR,TwoRegRF,-0.481557338282367,0.630394749307189,No significant difference; similar predictive accuracy.

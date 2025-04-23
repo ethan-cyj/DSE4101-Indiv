@@ -1,0 +1,214 @@
+%%latex
+\documentclass{article}
+\usepackage{booktabs}    % For \toprule, \midrule, \bottomrule
+%%\usepackage{multirow}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{array}
+
+\begin{document}
+	
+\begin{table}[htbp]
+	\centering
+	\caption{Model Performance Metrics}
+	\label{tab:model_performance_metrics}
+	\begin{tabular}{%
+			p{2.9cm}    % Model column
+			p{2.7cm}    % Regime column
+			p{2.1cm}    % RMSE (6dp)
+			p{2.1cm}    % MAPE (% with 2dp)
+			p{2.1cm}    % R^2 (4dp)
+			p{2.1cm}    % QLIKE (4dp)
+			p{1.2cm}    % Count
+		}
+		\toprule
+		\textbf{Model} & \textbf{Regime} 
+		& \multicolumn{4}{c}{\textbf{Performance Metrics}} & \textbf{Count} \\
+		\cmidrule(lr){3-6}
+		& & \textbf{RMSE} & \textbf{MAPE (\%)} & \boldmath{$R^2$} & \textbf{Q-LIKE} & \\
+		\midrule
+		
+		%-------------------------------------------------
+		% Common Dates Test Set Predictions
+		%-------------------------------------------------
+		\multicolumn{7}{l}{\textbf{Common Dates Test Set Predictions\textsuperscript{1}}} \\
+		\midrule
+		One-Regime HAR & High Volatility  & 0.003371 & 49.90  & 0.0163 & 0.3470 & 22 \\
+		One-Regime RF  & High Volatility  & 0.003721 & 55.04  & 0.1982 & 0.5218 & 22 \\
+		Two-Regime HAR & High Volatility  & 0.003346 & 50.49  & 0.0313 & 0.3356 & 22 \\
+		Two-Regime RF  & High Volatility  & 0.003406 & 58.44  & 0.0041 & 0.3681 & 22 \\
+		\cmidrule(lr){1-7}
+		One-Regime HAR & Low Volatility   & 0.000870 & 68.89  & 0.1350 & 0.3251 & 385 \\
+		One-Regime RF  & Low Volatility   & 0.000887 & 127.70 & 0.1003 & 0.3298 & 385 \\
+		Two-Regime HAR & Low Volatility   & 0.000869 & 66.81  & 0.1376 & 0.3297 & 385 \\
+		Two-Regime RF  & Low Volatility   & 0.000874 & 106.14  & 0.1264 & 0.3476 & 385 \\
+		\cmidrule(lr){1-7}
+		One-Regime HAR & Overall          & 0.001153 & 67.86  & 0.3463 & 0.3263 & 407 \\
+		One-Regime RF  & Overall          & 0.001222 & 123.77 & 0.2664 & 0.3402 & 407 \\
+		Two-Regime HAR & Overall          & 0.001148 & 65.92  & 0.3520 & 0.3300 & 407 \\
+		Two-Regime RF  & Overall          & 0.001162 & 103.56  & 0.3366 & 0.3487 & 407 \\
+		\midrule
+		
+		%-------------------------------------------------
+		% Individual Model Performance on Original Test Sets
+		%-------------------------------------------------
+		\multicolumn{7}{l}{\textbf{Individual Model Performance on Original Test Sets}} \\
+		\midrule
+		\multicolumn{7}{l}{\textbf{One-Regime Models\textsuperscript{2}}} \\
+		One-Regime HAR   & High Volatility & 0.003371 & 49.90  & 0.0163 & 0.3470 & 22 \\
+		One-Regime RF    & High Volatility & 0.003721 & 55.04  & 0.1982 & 0.5218 & 22 \\
+		One-Regime HAR   & Low Volatility  & 0.001074 & 61.47  & 0.0815 & 0.3013 & 535 \\
+		One-Regime RF    & Low Volatility  & 0.001093 & 108.49 & 0.0501 & 0.3091 & 535 \\
+		One-Regime HAR   & Overall         & 0.001248 & 61.02  & 0.2460 & 0.3031 & 557 \\
+		One-Regime RF    & Overall         & 0.001301 & 106.38 & 0.1802 & 0.3175 & 557 \\
+		\midrule
+		\multicolumn{7}{l}{\textbf{Two-Regime Models}} \\
+		Two-Regime HAR   & High Volatility & 0.007944 & 44.12  & 0.0897 & 0.5782 & 172 \\
+		Two-Regime RF    & High Volatility & 0.008050 & 53.04  & 0.0653 & 0.7126 & 172 \\
+		Two-Regime HAR   & Low Volatility  & 0.000869 & 66.81  & 0.1376 & 0.3297 & 385 \\
+		Two-Regime RF    & Low Volatility  & 0.000874 & 106.14  & 0.1264 & 0.3476 & 385 \\
+		Two-Regime HAR   & Overall         & 0.004473 & 59.80  & 0.2343 & 0.4064 & 557 \\
+		Two-Regime RF    & Overall         & 0.004532 & 89.74  & 0.2141 & 0.4603 & 557 \\
+		\bottomrule
+		\multicolumn{7}{l}{\footnotesize\textsuperscript{1}Common dates determined by the intersection of one-regime and two-regime test sets.}\\
+		\multicolumn{7}{l}{\footnotesize\textsuperscript{2}Models were not differentiated by regime during training; regime classification performed post-hoc using a Hidden Markov Model.}\\
+	\end{tabular}
+\end{table}
+
+
+%-------------------------------
+% DM Test Results Table
+%-------------------------------
+
+\begin{table}[htbp]
+	\centering
+	\caption{Diebold-Mariano Test Results Across Volatility Regimes}
+	\label{tab:dm-test-results}
+	\begin{tabular}{p{4.6cm} p{2.4cm} p{2.3cm} p{2.1cm} p{4.0cm}}
+		\toprule
+		\textbf{Models Compared} & \textbf{Volatility Regime} & \textbf{DM Statistic} & \textbf{P-Value} & \textbf{Conclusion} \\
+		\midrule
+		\multicolumn{5}{l}{\textbf{Overall Performance}} \\
+		\midrule
+		OneRegHAR vs OneRegRF   & Overall   & -2.5835 & 0.0101 & OneRegHAR outperforms \\
+		OneRegHAR vs TwoRegHAR   & Overall   & 1.4386  & 0.1510 & No significant difference \\
+		OneRegHAR vs TwoRegRF    & Overall   & -0.3600 & 0.7190 & No significant difference \\
+		OneRegRF vs TwoRegHAR    & Overall   & 2.6217  & 0.0091 & TwoRegHAR outperforms \\
+		OneRegRF vs TwoRegRF     & Overall   & 2.489  & 0.0132 & TwoRegRF outperforms \\
+		TwoRegHAR vs TwoRegRF    & Overall   & -0.5820 & 0.5609 & No significant difference \\
+		\midrule
+		\multicolumn{5}{l}{\textbf{High Volatility Regime}} \\
+		\midrule
+		OneRegHAR vs OneRegRF   & High Vol  & -2.5612 & 0.0182 & OneRegHAR outperforms \\
+		OneRegHAR vs TwoRegHAR   & High Vol  & 2.7839  & 0.0111 & TwoRegHAR outperforms \\
+		OneRegHAR vs TwoRegRF    & High Vol  & -0.2450 & 0.1806 & No significant difference \\
+		OneRegRF vs TwoRegHAR    & High Vol  & 2.6562  & 0.0148 & TwoRegHAR outperforms \\
+		OneRegRF vs TwoRegRF     & High Vol  & 2.6493 & 0.0150 & TwoRegRF outperforms \\
+		TwoRegHAR vs TwoRegRF    & High Vol  & -0.4309 & 0.6709 & No significant difference \\
+		\midrule
+		\multicolumn{5}{l}{\textbf{Low Volatility Regime}} \\
+		\midrule
+		OneRegHAR vs OneRegRF   & Low Vol   & -1.1798 & 0.2388 & No significant difference \\
+		OneRegHAR vs TwoRegHAR   & Low Vol   & 0.3104  & 0.7564 & No significant difference \\
+		OneRegHAR vs TwoRegRF    & Low Vol   & -0.3366 & 0.7366 & No significant difference \\
+		OneRegRF vs TwoRegHAR    & Low Vol   & 1.1161  & 0.2651 & No significant difference \\
+		OneRegRF vs TwoRegRF     & Low Vol   & 0.8352  & 0.4041 & No significant difference \\
+		TwoRegHAR vs TwoRegRF    & Low Vol   & -0.4816 & 0.6304 & No significant difference \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+	
+
+
+
+
+
+
+%-------------------------------
+% HAR Model Coefficients Comparison Table
+%-------------------------------
+\begin{table}[htbp]
+\centering
+\caption{HAR Model Coefficients Comparison Across Regimes}
+\label{tab:har_coefficients_comparison}
+\begin{tabular}{lrrrrrr}
+\toprule
+ {} & \multicolumn{2}{c}{\textbf{One-Regime}} & \multicolumn{2}{c}{\textbf{Two-Regime High}} & \multicolumn{2}{c}{\textbf{Two-Regime Low}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+                           {\textbf{Predictor}} & \textbf{Coefficient} & \textbf{p-value}   & \textbf{Coefficient} & \textbf{p-value}   & \textbf{Coefficient} & \textbf{p-value}   \\
+\midrule
+const          & -0.6024   & 0.0002    & -7.0526    & 0.0000    & -7.1480    & 0.0000    \\
+ln\_RV\_d,t    & 0.4808    & 0.0000    & 0.4799     & 0.0000    & 0.4471     & 0.0000    \\
+ln\_RV\_w,t    & 0.3076    & 0.0000    & 0.2517     & 0.0006    & 0.2542     & 0.0000    \\
+ln\_RV\_m,t    & 0.1406    & 0.0007    & 0.0953     & 0.0393    & 0.1068     & 0.0103    \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%-------------------------------
+% Random Forest Feature Importances Comparison Table
+%-------------------------------
+\begin{table}[htbp]
+\centering
+\caption{Random Forest Feature Importances Comparison Across Regimes}
+\label{tab:rf_feature_importances_comparison}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Predictor}         & \multicolumn{1}{c}{\textbf{One-Regime}} & \multicolumn{1}{c}{\textbf{Two-Regime High}} & \multicolumn{1}{c}{\textbf{Two-Regime Low}} \\
+\midrule
+ln\_RV\_d,t       & 0.5883 & 0.4461 & 0.4366 \\
+ln\_RV\_w,t       & 0.1507 & 0.2560 & 0.1791 \\
+ln\_RV\_m,t       & 0.0670 & 0.0697 & 0.0923 \\
+volume            & 0.0462 & 0.0671 & 0.0629 \\
+high              & 0.0445 & 0.0457 & 0.0852     \\
+Fear\_Greed\_Value & 0.0424 & 0.0741 & 0.0567 \\
+UEMP15T26         & 0.0178 & 0.01178 & 0.0218 \\
+TB3SMFFM          & 0.0163 & 0.0098 & 0.0282 \\
+PERMITW           & 0.0134 & 0.0179 & 0.0201 \\
+UEMP27OV          & 0.0132 & 0.0087 & 0.0171 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%-------------------------------
+% Model Metric Comparison Table
+%-------------------------------
+
+\begin{table}
+\centering
+\caption{Model Performance Metrics Across Forecasting Approaches}
+\label{tab:model_performance_metrics_2}
+\begin{tabular}{lrrrrr}
+\toprule
+                    Model-Regime &   RMSE &  MAPE (\textbackslash \%) &  R\textbackslash \$\textasciicircum 2\textbackslash \$ &  QLIKE &  Count \\
+\midrule
+    One-Regime Common High - HAR & 0.0034 &     0.4990 &   0.0163 & 0.3470 &     22 \\
+    One-Regime Common High - RF & 0.0037 &     0.5504 &  -0.1982 & 0.5218 &     22 \\
+    One-Regime Common Low - HAR & 0.0009 &     0.6889 &   0.1350 & 0.3251 &    385 \\
+        One-Regime Common Low - RF & 0.0009 &     1.2770 &   0.1003 & 0.3298 &    385 \\
+One-Regime Common Overall - HAR & 0.0012 &     0.6787 &   0.3463 & 0.3263 &    407 \\
+    One-Regime Common Overall - RF & 0.0012 &     1.2377 &   0.2664 & 0.3402 &    407 \\
+            One-Regime High - HAR & 0.0034 &     0.4990 &   0.0163 & 0.3470 &     22 \\
+            One-Regime High - RF & 0.0037 &     0.5504 &  -0.1982 & 0.5218 &     22 \\
+            One-Regime Low - HAR & 0.0011 &     0.6147 &   0.0815 & 0.3013 &    535 \\
+            One-Regime Low - RF & 0.0011 &     1.0849 &   0.0501 & 0.3091 &    535 \\
+        One-Regime Overall - HAR & 0.0012 &     0.6102 &   0.2460 & 0.3031 &    557 \\
+        One-Regime Overall - RF & 0.0013 &     1.0638 &   0.1802 & 0.3175 &    557 \\
+    Two-Regime Common High - HAR & 0.0033 &     0.5049 &   0.0313 & 0.3356 &     22 \\
+    Two-Regime Common High - RF & 0.0036 &     0.5279 &  -0.1458 & 0.5360 &     22 \\
+    Two-Regime Common Low - HAR & 0.0009 &     0.6681 &   0.1376 & 0.3297 &    385 \\
+        Two-Regime Common Low - RF & 0.0009 &     0.8856 &   0.1283 & 0.3841 &    385 \\
+Two-Regime Common Overall - HAR & 0.0011 &     0.6592 &   0.3520 & 0.3300 &    407 \\
+    Two-Regime Common Overall - RF & 0.0012 &     0.8662 &   0.2939 & 0.3923 &    407 \\
+            Two-Regime High - HAR & 0.0079 &     0.4412 &   0.0897 & 0.5782 &    172 \\
+            Two-Regime High - RF & 0.0081 &     0.5159 &   0.0583 & 0.7688 &    172 \\
+            Two-Regime Low - HAR & 0.0009 &     0.6681 &   0.1376 & 0.3297 &    385 \\
+            Two-Regime Low - RF & 0.0009 &     0.8856 &   0.1283 & 0.3841 &    385 \\
+        Two-Regime Overall - HAR & 0.0045 &     0.5980 &   0.2343 & 0.4064 &    557 \\
+        Two-Regime Overall - RF & 0.0045 &     0.7714 &   0.2084 & 0.5029 &    557 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\end{document}

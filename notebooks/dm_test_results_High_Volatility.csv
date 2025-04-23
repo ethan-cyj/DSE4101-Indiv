@@ -1,0 +1,7 @@
+Model 1,Model 2,DM Statistic,P-Value,Conclusion
+OneRegHAR,OneRegRF,-2.561200176553989,0.01819454701692553,Significant difference; OneRegHAR outperforms OneRegRF.
+OneRegHAR,TwoRegHAR,2.7838880270817414,0.011123997932932662,Significant difference; TwoRegHAR outperforms OneRegHAR.
+OneRegHAR,TwoRegRF,-0.2450105866913655,0.8088265640678542,No significant difference; similar predictive accuracy.
+OneRegRF,TwoRegHAR,2.6562412449501283,0.014772384066094232,Significant difference; TwoRegHAR outperforms OneRegRF.
+OneRegRF,TwoRegRF,2.649308268498981,0.014999906291846025,Significant difference; TwoRegRF outperforms OneRegRF.
+TwoRegHAR,TwoRegRF,-0.43092056161280873,0.6709169932077916,No significant difference; similar predictive accuracy.
